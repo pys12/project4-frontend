@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-
+import {Card} from 'react-bootstrap'
 
 const Album = ({ album, updateAlbum, deleteAlbum }) => {
   
@@ -10,7 +10,7 @@ const Album = ({ album, updateAlbum, deleteAlbum }) => {
     const [editForm, setEditForm] = useState(album)
 
     const handleChange = (e) => {
-        if (e.target.name == 'tracklist') {
+        if (e.target.name === 'tracklist') {
             setEditForm({ ...editForm, [e.target.name]: e.target.value.split(',') })
         } else {
             setEditForm({ ...editForm, [e.target.name]: e.target.value })
@@ -29,6 +29,7 @@ const Album = ({ album, updateAlbum, deleteAlbum }) => {
     
     return (
         <>
+            <Card>
             <div>{album.title}</div>
             <img src={album.cover} alt='cover'/>
             <ul>
@@ -39,6 +40,7 @@ const Album = ({ album, updateAlbum, deleteAlbum }) => {
             <div>Release Date: {album.releaseDate.split('T')[0]}</div>
             <div>Price: ${album.price}</div>
             <button onClick={removeAlbum}>Delete</button>
+            </Card>
             
             <form onSubmit={handleSubmit}>
                 <label>Title</label>

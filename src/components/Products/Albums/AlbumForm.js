@@ -11,10 +11,8 @@ const AlbumForm = ({ createAlbum}) => {
     })
 
     const handleChange = (e) => {
-       // console.log(e.target.name);
        setAlbumForm({...albumForm, [e.target.name]: e.target.value });
-        //console.log(form)
-      };
+    };
     
     const handleSubmit = (e) => {
         e.preventDefault()
