@@ -3,9 +3,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import Albums from "./components/Products/Albums/Albums";
 import Home from "./pages/Home/Home";
-import Product from "./pages/Product/Product";
+import ProductDetail from "./pages/ProductDetail/ProductDetail";
 
 
 function App() {
@@ -15,7 +14,7 @@ function App() {
       <main>
         <Container>
           <Route path='/' component={Home} exact />
-          <Route path='/products/:id' component={Product} />
+          <Route path='/products/:id' component={ProductDetail} />
         </Container>
       </main>
       <Footer />

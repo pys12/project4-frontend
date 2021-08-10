@@ -5,7 +5,7 @@ import Album from './Album'
 const Albums = (props) => {
   const [albums, setAlbums] = useState([]);
  
-  const albumsUrl = "http://localhost:5000/albums/";
+  const albumsUrl = "http://localhost:5000/products/";
 
   const getAlbums = async () => {
     const response = await fetch(albumsUrl);
