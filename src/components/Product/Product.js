@@ -10,9 +10,10 @@ const Product = ({product}) => {
         </Link>
         <Card.Body>
             <Card.Title as='div'>
-              <div>{product.title}</div>
+            <h5>{product.title}</h5>
+            <div>{product.artist}</div>
             </Card.Title>
-          <Card.Text as='h5'>${product.price}</Card.Text>
+          <Card.Text>${product.price}</Card.Text>
         </Card.Body>
       </Card>
     )
