@@ -2,10 +2,16 @@ import React from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../redux/actions/userActions";
 
 const Header = () => {
+  const dispatch = useDispatch()
   const { userInfo } = useSelector(state => state.userLogin )
   
+  const logoutHandler = () => {
+    //console.log("logout")
+    dispatch(logout())
+  }
   return (
     <header>
       <Navbar bg="light" expand="lg" collapseOnSelect>
@@ -19,7 +25,7 @@ const Header = () => {
               {userInfo ?
                 <>
                 <Nav.Link>Welcome,{userInfo.name}</Nav.Link>
-                <Nav.Link>Logout</Nav.Link>
+                <Nav.Link onClick={logoutHandler}>Logout</Nav.Link>
                   </>
                 :
               <LinkContainer to="/login">

@@ -24,4 +24,10 @@ export const login = (email, password) => async (dispatch) => {
         payload:error.response 
       })
     }
-  }
+}
+  
+export const logout = () => (dispatch)=>{
+  localStorage.removeItem('userInfo')
+  dispatch({type:actionTypes.USER_LOGOUT})
+  
+}
