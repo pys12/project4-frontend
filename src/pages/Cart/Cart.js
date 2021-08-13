@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart, removeFromCart } from "../../redux/actions/cartActions";
-import { Row,Col, Image, Button,Form,ListGroup,} from "react-bootstrap";
+import { Row, Col, Image, Button, Form, ListGroup } from "react-bootstrap";
 
 const Cart = ({ match, history, location }) => {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const Cart = ({ match, history, location }) => {
   //console.log(quantity)
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
-  console.log(cartItems);
+  //console.log(cartItems);
 
   useEffect(() => {
     if (match.params.id) {
@@ -30,12 +30,12 @@ const Cart = ({ match, history, location }) => {
       <Col>
         <h1>Shopping Cart</h1>
         {cartItems.length === 0 ? (
-          <div>
-            Your shopping cart is empty{" "}
+          <>
+            <h3>Your shopping cart is empty!&nbsp;&nbsp;</h3>
             <Link to="/">
               <Button>Back to shopping?</Button>
             </Link>
-          </div>
+          </>
         ) : (
           <>
             <ListGroup>
@@ -78,20 +78,19 @@ const Cart = ({ match, history, location }) => {
               ))}
             </ListGroup>
             <Col>
-                <h2>
-                  Order Summary (
-                  {cartItems.reduce((acc, item) => acc + item.quantity, 0)})
-                  items
-                </h2>
-                <h3>
-                  Subtotal $
-                  {cartItems
-                    .reduce((acc, item) => acc + item.quantity * item.price, 0)
-                    .toFixed(2)}
-                </h3>
-                <Button disabled={cartItems.length === 0}>
-                  Proceed To Checkout
-                </Button>
+              <h2>
+                Order Summary (
+                {cartItems.reduce((acc, item) => acc + item.quantity, 0)}) items
+              </h2>
+              <h3>
+                Subtotal $
+                {cartItems
+                  .reduce((acc, item) => acc + item.quantity * item.price, 0)
+                  .toFixed(2)}
+              </h3>
+              <Button disabled={cartItems.length === 0}>
+                Proceed To Checkout
+              </Button>
             </Col>
           </>
         )}
