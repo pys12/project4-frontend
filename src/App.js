@@ -7,13 +7,16 @@ import Home from "./pages/Home/Home";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import Cart from './pages/Cart/Cart'
 import Login from './pages/Login/Login'
+import Register from './pages/Register/Register'
+
 function App() {
   return (
     <Router>
       <Header />
       <main>
         <Container>
-        <Route path='/login' component={Login} />
+          <Route path='/register' component={Register} />
+          <Route path='/login' component={Login} />
           <Route path='/cart/:id?' component={Cart} />
           <Route path='/products/:id' component={ProductDetail} />
           <Route path='/' component={Home} exact />
