@@ -25,6 +25,11 @@ const Cart = ({ match, history, location }) => {
     dispatch(removeFromCart(id));
   };
 
+  const checkout = () => {
+    console.log("checkout")
+    history.push('/login?redirect=shipping')
+
+  }
   return (
     <>
       <Col>
@@ -88,7 +93,7 @@ const Cart = ({ match, history, location }) => {
                   .reduce((acc, item) => acc + item.quantity * item.price, 0)
                   .toFixed(2)}
               </h3>
-              <Button disabled={cartItems.length === 0}>
+              <Button disabled={cartItems.length === 0} onClick={checkout}>
                 Proceed To Checkout
               </Button>
             </Col>
