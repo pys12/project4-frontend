@@ -1,6 +1,9 @@
 import * as actionTypes from "../constants/cartConstants";
 
-export const cartReducer = (state = { cartItems: [],shippingAddress:{} }, action) => {
+export const cartReducer = (
+  state = { cartItems: [], shippingAddress: {} },
+  action
+) => {
   switch (action.type) {
     case actionTypes.ADD_TO_CART:
       const item = action.payload;
@@ -23,11 +26,16 @@ export const cartReducer = (state = { cartItems: [],shippingAddress:{} }, action
         ...state,
         cartItems: state.cartItems.filter((x) => x.product !== action.payload),
       };
-      case actionTypes.SAVE_SHIPPING_ADDRESS:
-        return {
-          ...state,
-          shippingAddress: action.payload,
-        };
+    case actionTypes.SAVE_SHIPPING_ADDRESS:
+      return {
+        ...state,
+        shippingAddress: action.payload,
+      };
+    case actionTypes.SAVE_PAYMENT_METHOD:
+      return {
+        ...state,
+        paymentMethod: action.payload,
+      };
     default:
       return state;
   }
