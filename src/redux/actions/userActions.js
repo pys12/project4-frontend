@@ -28,7 +28,11 @@ export const login = (email, password) => async (dispatch) => {
   
 export const logout = () => (dispatch)=>{
   localStorage.removeItem('userInfo')
-  dispatch({type:actionTypes.USER_LOGOUT})
+  localStorage.removeItem('cartItems')
+  localStorage.removeItem('shippingAddress')
+  localStorage.removeItem('paymentMethod')
+  dispatch({ type: actionTypes.USER_LOGOUT })
+  document.location.href = '/';
   
 }
 

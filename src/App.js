@@ -10,6 +10,7 @@ import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import Shipping from "./pages/Shipping/Shipping";
 import Payment from "./pages/Payment/Payment";
+import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Header />
       <main>
         <Container>
+          <Route path='/placeorder' component={PlaceOrder} />
           <Route path='/payment' component={Payment} />
           <Route path='/shipping' component={Shipping} />
           <Route path='/register' component={Register} />

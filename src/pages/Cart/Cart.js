@@ -26,7 +26,7 @@ const Cart = ({ match, history, location }) => {
   };
 
   const checkout = () => {
-    console.log("checkout")
+    //console.log("checkout")
     history.push('/login?redirect=shipping')
 
   }
