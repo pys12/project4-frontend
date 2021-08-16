@@ -10,6 +10,10 @@ import {
   userLoginReducer,
   userRegisterReducer,
 } from "./redux/reducers/userReducers";
+import {
+  createOrderReducer,
+  orderDetailReducer,
+} from "./redux/reducers/orderReducers";
 
 const reducer = combineReducers({
   productList: productListReducer,
@@ -17,6 +21,8 @@ const reducer = combineReducers({
   cart: cartReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
+  createOrder: createOrderReducer,
+  orderDetail: orderDetailReducer,
 });
 const initialState = {
   cart: {

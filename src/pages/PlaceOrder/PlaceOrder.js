@@ -1,22 +1,35 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { createOrder } from "../../redux/actions/orderActions";
 
-const PlaceOrder = () => {
+const PlaceOrder = ({ history }) => {
   const cart = useSelector((state) => state.cart);
-
+  const dispatch = useDispatch();
+  const { order, success, error } = useSelector((state) => state.createOrder);
   //assume shipping and tax are 0
   //cart.taxPrice = 0.00
   //cart.shippingPrice =0.00
   cart.totalPrice = cart.cartItems
     .reduce((acc, item) => acc + item.quantity * item.price, 0)
-      .toFixed(2);
-    
+    .toFixed(2);
+
   const placeOrderHandler = () => {
-    console.log("place your order");
+    //console.log("place your order");
+    dispatch(
+      createOrder({
+        ...cart,
+        orderItems: cart.cartItems,
+      })
+    );
   };
-    
+  useEffect(() => {
+    if (success) {
+      history.push(`/orders/${order._id}`);
+    }
+  });
+
   return (
     <Row>
       <Col>
@@ -24,16 +37,14 @@ const PlaceOrder = () => {
           <ListGroup.Item>
             <h3>Shipping Address: </h3>
             <>
-              {cart.shippingAddress.streetAddress},{cart.shippingAddress.city}
+              {cart.shippingAddress.streetAddress},{cart.shippingAddress.city},
               {cart.shippingAddress.state},{cart.shippingAddress.zipcode}
             </>
           </ListGroup.Item>
 
           <ListGroup.Item>
             <h3>Payment Information: </h3>
-            <>
-              {cart.paymentMethod}
-            </>
+            <>{cart.paymentMethod}</>
           </ListGroup.Item>
 
           <ListGroup.Item>
@@ -82,7 +93,8 @@ const PlaceOrder = () => {
             <ListGroup.Item>
               <Button
                 disabled={cart.cartItems === 0}
-                onClick={placeOrderHandler}>
+                onClick={placeOrderHandler}
+              >
                 Place Order
               </Button>
             </ListGroup.Item>
