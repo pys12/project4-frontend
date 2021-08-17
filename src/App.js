@@ -12,6 +12,8 @@ import Shipping from "./pages/Shipping/Shipping";
 import Payment from "./pages/Payment/Payment";
 import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
 import Order from "./pages/Order/Order";
+import ProductList from "./pages/ProductList/ProductList";
+import ProductEdit from "./pages/ProductEdit/ProductEdit";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
       <Header />
       <main>
         <Container>
+          <Route path='/admin/products/:id/edit' component={ProductEdit} />   
+          <Route path='/admin/products' exact component={ProductList} />   
           <Route path='/orders/:id' component={Order} />   
           <Route path='/placeorder' component={PlaceOrder} />
           <Route path='/payment' component={Payment} />
