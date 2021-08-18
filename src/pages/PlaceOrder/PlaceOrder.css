@@ -1,0 +1,22 @@
+.place-order-page{
+    margin:40px 0;
+}
+.order-detail{
+    border: none;
+    margin:20px
+}
+.shipping-address,.payment-info{
+    text-decoration: underline;
+}
+.address{
+    padding: 20px 0;
+    font-size: 20px;
+}
+.payment-method{
+    padding:20px 0;
+    font-size: 20px;
+
+}
+.cart-img{
+    width: 80px;
+}

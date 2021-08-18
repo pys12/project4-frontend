@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Form, Button, Container } from "react-bootstrap";
 import { register } from "../../redux/actions/userActions";
+import './Register.css'
 
 const Register = ({ history, location }) => {
     const [name, setName] = useState("");
@@ -29,14 +30,14 @@ const Register = ({ history, location }) => {
     dispatch(register(name,email, password));
   };
   return (
-    <Container>
+    <Container >
       <Row>
         <Col>
           <h3>Register</h3>
                   <Form onSubmit={submitHandler}>
                   <Form.Group controlId="name">
               <Form.Label>Name</Form.Label>
-              <Form.Control
+              <Form.Control className='register-form'
                 type="name"
                 placeholder="Enter name"
                 value={name}
@@ -45,7 +46,7 @@ const Register = ({ history, location }) => {
             </Form.Group>
             <Form.Group controlId="email">
               <Form.Label>Email Address</Form.Label>
-              <Form.Control
+              <Form.Control className='register-form'
                 type="email"
                 placeholder="Enter email"
                 value={email}
@@ -55,7 +56,7 @@ const Register = ({ history, location }) => {
 
             <Form.Group controlId="password">
               <Form.Label>Password</Form.Label>
-              <Form.Control
+              <Form.Control className='register-form'
                 type="password"
                 placeholder="Create password"
                 value={password}
@@ -63,10 +64,10 @@ const Register = ({ history, location }) => {
               ></Form.Control>
             </Form.Group>
 
-            <Button type="submit" variant="primary">Register</Button>
+            <Button className='btn' type="submit" variant="primary">Register</Button>
             <Row>
               <Col>
-                Already have an account?
+                Already have an account?{" "}
                 <Link
                   to={redirect ? `/login?redirect=${redirect}` : "/login"}
                 >

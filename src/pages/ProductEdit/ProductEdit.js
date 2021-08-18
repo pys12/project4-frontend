@@ -7,6 +7,7 @@ import {
   updateProduct,
 } from "../../redux/actions/productActions";
 import { UPDATE_PRODUCT_RESET } from "../../redux/constants/productConstants";
+import './ProductEdit.css'
 
 const ProductEdit = ({ match, history }) => {
   const product_id = match.params.id;
@@ -63,8 +64,8 @@ const ProductEdit = ({ match, history }) => {
       <>
         {updating && <div>loading...</div>}
         {updateFail && {error}}
-      <Link to="/admin/products" className="btn btn-light my-3">
-        Back
+      <Link to="/admin/products" >
+      <i className="fas fa-arrow-alt-circle-left back-arrow"></i>
       </Link>
       <Container>
         <Row className="justify-content-md-center">

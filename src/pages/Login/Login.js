@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Form, Button, Container } from "react-bootstrap";
 import { login } from "../../redux/actions/userActions";
+import './Login.css'
 const Login = ({ history, location }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,14 +27,14 @@ const Login = ({ history, location }) => {
     dispatch(login(email, password));
   };
   return (
-    <Container>
+    <Container className='login-page'>
       <Row>
         <Col>
           <h3>Log In</h3>
-          <Form onSubmit={submitHandler}>
+          <Form className='login-form-2' onSubmit={submitHandler}>
             <Form.Group controlId="email">
               <Form.Label>Email Address</Form.Label>
-              <Form.Control
+              <Form.Control className='login-form'
                 type="email"
                 placeholder="Enter email"
                 value={email}
@@ -43,7 +44,7 @@ const Login = ({ history, location }) => {
 
             <Form.Group controlId="password">
               <Form.Label>Password</Form.Label>
-              <Form.Control
+              <Form.Control className='login-form'
                 type="password"
                 placeholder="Enter password"
                 value={password}
@@ -51,14 +52,14 @@ const Login = ({ history, location }) => {
               ></Form.Control>
             </Form.Group>
 
-            <Button type="submit" variant="primary">Log In</Button>
+            <Button className='btn' type="submit" variant="primary">Log In</Button>
             <Row>
               <Col>
-                Don't have an account?
+                Don't have an account?{" "}
                 <Link
                   to={redirect ? `/register?redirect=${redirect}` : "/register"}
                 >
-                  Register
+                   Register
                 </Link>
               </Col>
             </Row>

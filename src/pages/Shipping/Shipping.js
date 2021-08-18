@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { saveShippingAddress } from "../../redux/actions/cartActions";
+import './Shipping.css'
 
 const Shipping = ({history}) => {
   const dispatch = useDispatch()
@@ -22,11 +23,11 @@ const Shipping = ({history}) => {
     <Container>
       <Row>
         <Col>
-          <h1>Shipping</h1>
+          <h1>Shipping Address</h1>
           <Form onSubmit={submitHandler}>
-            <Form.Group controlId="address">
+            <Form.Group className='address-section' controlId="address">
               <Form.Label>Street Address</Form.Label>
-              <Form.Control
+              <Form.Control className='shipping-form'
                 type="text"
                 value={streetAddress}
                 required
@@ -34,9 +35,9 @@ const Shipping = ({history}) => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId="city">
+            <Form.Group  className='address-section' controlId="city">
               <Form.Label>City</Form.Label>
-              <Form.Control
+              <Form.Control className='shipping-form'
                 type="text"
                 value={city}
                 required
@@ -44,9 +45,9 @@ const Shipping = ({history}) => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId="state">
+            <Form.Group  className='address-section' controlId="state">
               <Form.Label>State</Form.Label>
-              <Form.Control
+              <Form.Control className='shipping-form'
                 type="text"
                 value={state}
                 required
@@ -54,9 +55,9 @@ const Shipping = ({history}) => {
               ></Form.Control>
             </Form.Group>
                       
-            <Form.Group controlId="zipcode">
+            <Form.Group  className='address-section' controlId="zipcode">
               <Form.Label>Zipcode</Form.Label>
-              <Form.Control
+              <Form.Control className='shipping-form'
                 type="text"
                 value={zipcode}
                 required

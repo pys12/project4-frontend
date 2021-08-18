@@ -6,6 +6,9 @@ nav.navbar {
   margin-bottom: 24px;
   background-color: #c5ede2;
 }
+.navbar-brand{
+  font-weight: 500;
+}
 .navbar-light .navbar-nav .nav-link{
   color:rgba(0, 0, 0, 0.701);
 }
@@ -23,4 +26,16 @@ footer {
 }
 .edit-btn{
   margin-right: 10px;
+}
+.card{
+  border-color:#c5ede2;
+}
+.card:hover{
+    border: 2px solid rgba(119, 116, 120, 0.527);
+}
+.btn{
+  margin-bottom: 20px;
+}
+i{
+  font-size: 20px;
 }

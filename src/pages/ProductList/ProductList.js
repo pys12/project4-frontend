@@ -8,6 +8,7 @@ import {
   createProduct,
 } from "../../redux/actions/productActions";
 import { CREATE_PRODUCT_RESET } from "../../redux/constants/productConstants";
+import './ProductList.css'
 
 const ProductList = ({ history }) => {
   const dispatch = useDispatch();
@@ -17,15 +18,20 @@ const ProductList = ({ history }) => {
   );
 
   const { success: deleted } = useSelector((state) => state.deleteProduct);
-  const { success: created } = useSelector((state) => state.createProduct);
+  const { success: created,product:createdProduct } = useSelector((state) => state.createProduct);
   const { userInfo } = useSelector((state) => state.userLogin);
 
   useEffect(() => {
-    dispatch(getProducts(), { type: CREATE_PRODUCT_RESET });
+    dispatch({ type: CREATE_PRODUCT_RESET });
     if (!userInfo || !userInfo.isAdmin) {
       history.push("/login");
     }
-  }, [dispatch, history, userInfo, deleted, created]);
+    if (created) {
+      history.push(`/admin/products/${createdProduct._id}/edit`)
+    } else {
+      dispatch(getProducts())
+    }
+  }, [dispatch, history, userInfo, deleted, created,createdProduct]);
 
   const deleteHandler = (id) => {
     dispatch(deleteProduct(id));
@@ -48,8 +54,8 @@ const ProductList = ({ history }) => {
       ) : products.length > 0 ? (
         <Table hover responsive>
           <thead>
-            <tr>
-              <th>ID</th>
+            <tr className='col-name'>
+              <th>Product ID</th>
               <th>Artist</th>
               <th>Title</th>
               <th>Price</th>

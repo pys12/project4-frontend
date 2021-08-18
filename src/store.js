@@ -16,6 +16,7 @@ import {
 import {
   createOrderReducer,
   orderDetailReducer,
+  orderPayReducer,
 } from "./redux/reducers/orderReducers";
 
 const reducer = combineReducers({
@@ -29,6 +30,7 @@ const reducer = combineReducers({
   userRegister: userRegisterReducer,
   createOrder: createOrderReducer,
   orderDetail: orderDetailReducer,
+  orderPay: orderPayReducer
 });
 const initialState = {
   cart: {

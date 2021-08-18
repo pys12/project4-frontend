@@ -4,7 +4,7 @@ import { Card } from 'react-bootstrap'
 
 const Product = ({product}) => {
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card className='my-4 p-4'>
         <Link to={`/products/${product._id}`}>
           <Card.Img src={product.cover} variant='top' />
         </Link>

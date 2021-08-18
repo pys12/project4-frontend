@@ -24,8 +24,10 @@ const Header = () => {
             <Nav className="ms-auto">
               {userInfo ?
                 <>
-                <Nav.Link>Welcome, {userInfo.name}</Nav.Link>
-                <Nav.Link onClick={logoutHandler}>Logout</Nav.Link>
+                <Nav.Link><i class="far fa-smile-wink"></i></Nav.Link>
+                  <NavDropdown title={userInfo.name} id='usermenu'>
+                    <NavDropdown.Item onClick={logoutHandler} >Logout</NavDropdown.Item>
+                  </NavDropdown>
                   </>
                 :
               <LinkContainer to="/login">

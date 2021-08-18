@@ -3,16 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart, removeFromCart } from "../../redux/actions/cartActions";
 import { Row, Col, Image, Button, Form, ListGroup } from "react-bootstrap";
+import './Cart.css'
 
 const Cart = ({ match, history, location }) => {
   const dispatch = useDispatch();
-  // location.search shows ?quantity=${quantity}
-  //console.log(location.search)
   const quantity = location.search ? Number(location.search.split("=")[1]) : 1;
-  //console.log(quantity)
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
-  //console.log(cartItems);
 
   useEffect(() => {
     if (match.params.id) {
@@ -21,28 +18,27 @@ const Cart = ({ match, history, location }) => {
   }, [dispatch, match.params.id, quantity]);
 
   const removeFromCartHandler = (id) => {
-    //console.log('remove')
     dispatch(removeFromCart(id));
   };
 
   const checkout = () => {
-    //console.log("checkout")
     history.push('/login?redirect=shipping')
 
   }
   return (
-    <>
-      <Col>
-        <h1>Shopping Cart</h1>
+    <div className='cart-page'>
+      <Col >
+        <h2 className='cart-title'>Shopping Cart</h2>
         {cartItems.length === 0 ? (
           <>
-            <h3>Your shopping cart is empty!&nbsp;&nbsp;</h3>
+            <div><i class="far fa-frown-open sad-face"></i></div>
+            <div className='empty-msg'>Your shopping cart is empty!&nbsp;&nbsp;</div>
             <Link to="/">
               <Button>Back to shopping?</Button>
             </Link>
           </>
         ) : (
-          <>
+            <>
             <ListGroup>
               {cartItems.map((item) => (
                 <ListGroup.Item key={item.product}>
@@ -50,11 +46,11 @@ const Cart = ({ match, history, location }) => {
                     <Col>
                       <Image src={item.cover} alt={item.title} fluid rounded />
                     </Col>
-                    <Col>
+                    <Col className='cart-item-info'>
                       <Link to={`/products/${item.product}`}>{item.title}</Link>
                     </Col>
-                    <Col>${item.price}</Col>
-                    <Col>
+                    <Col className='cart-item-info'>${item.price}</Col>
+                    <Col className='cart-item-info'>
                       <Form.Control
                         as="select"
                         value={item.quantity}
@@ -81,26 +77,32 @@ const Cart = ({ match, history, location }) => {
                   </Row>
                 </ListGroup.Item>
               ))}
-            </ListGroup>
-            <Col>
-              <h2>
-                Order Summary (
+              </ListGroup>
+              
+              
+            <ListGroup className='order-total'>
+              <ListGroup.Item className='order-total'>
+                Order Summary: (
                 {cartItems.reduce((acc, item) => acc + item.quantity, 0)}) items
-              </h2>
-              <h3>
-                Subtotal $
+              </ListGroup.Item>
+              <ListGroup.Item className='order-total'>
+                Subtotal: $
                 {cartItems
                   .reduce((acc, item) => acc + item.quantity * item.price, 0)
                   .toFixed(2)}
-              </h3>
+                </ListGroup.Item>
+                <ListGroup.Item className='order-total'>
+
               <Button disabled={cartItems.length === 0} onClick={checkout}>
                 Proceed To Checkout
               </Button>
-            </Col>
+                </ListGroup.Item>
+                </ListGroup>
+                
           </>
         )}
       </Col>
-    </>
+    </div>
   );
 };
 

@@ -1,0 +1,38 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Harmattan&display=swap');
+.product-detail{
+    font-size: 26px;
+    font-family: 'Harmattan', sans-serif;
+}
+.cover-img{
+    width: 640px;
+}
+.artist{
+    font-size: 38px;
+    font-weight: 700;
+
+}
+.quantity-select{
+    width: fit-content;
+    font-size: 20px;
+}
+.detail{
+   margin-top: 20px;
+   font-size:20px
+}
+.price{
+    font-weight:999;
+}
+ul{
+    list-style:none;
+    counter-reset: my-counter;
+}
+li{
+    counter-increment: my-counter;
+}
+li::before{
+    content: counter(my-counter) ". ";
+}
+.btn{
+    margin-top: 16px;
+}
