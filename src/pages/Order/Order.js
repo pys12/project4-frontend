@@ -18,7 +18,7 @@ const Order = ({ match }) => {
 
   useEffect(() => {
     const addPayPalScript = async () => {
-      const { data: clientId } = await axios.get("/config/paypal");
+      const { data: clientId } = await axios.get("https://record-on-the-block.herokuapp.com/config/paypal");
       const script = document.createElement("script");
       script.type = "text/javascript";
       script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;

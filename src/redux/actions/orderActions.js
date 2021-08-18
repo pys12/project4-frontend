@@ -16,7 +16,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const { data } = await axios.post(`/orders/`, order, config);
+    const { data } = await axios.post(`https://record-on-the-block.herokuapp.com/orders/`, order, config);
 
     dispatch({
       type: actionTypes.CREATE_ORDER_SUCCESS,
@@ -45,7 +45,7 @@ export const getOrderDetail = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const { data } = await axios.get(`/orders/${id}`, config);
+    const { data } = await axios.get(`https://record-on-the-block.herokuapp.com/orders/${id}`, config);
 
     dispatch({
       type: actionTypes.ORDER_DETAIL_SUCCESS,
@@ -77,7 +77,7 @@ export const payOrder =(orderId, paymentResult) => async (dispatch, getState) =>
       };
 
       const { data } = await axios.put(
-        `/orders/${orderId}/pay`,
+        `https://record-on-the-block.herokuapp.com/orders/${orderId}/pay`,
         paymentResult,
         config
       );

@@ -4,7 +4,7 @@ import axios from "axios";
 export const getProducts = () => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.PRODUCT_LIST_REQUEST });
-    const { data } = await axios.get(`/products/`);
+    const { data } = await axios.get(`https://record-on-the-block.herokuapp.com/products/`);
     dispatch({
       type: actionTypes.PRODUCT_LIST_SUCCESS,
       payload: data,
@@ -19,7 +19,7 @@ export const getProducts = () => async (dispatch) => {
 export const getProductDetail = (id) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.PRODUCT_DETAIL_REQUEST });
-    const { data } = await axios.get(`/products/${id}/`);
+    const { data } = await axios.get(`https://record-on-the-block.herokuapp.com/products/${id}/`);
     dispatch({
       type: actionTypes.PRODUCT_DETAIL_SUCCESS,
       payload: data,
@@ -39,7 +39,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
       userLogin: { userInfo },
     } = getState();
     const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-    await axios.delete(`/products/${id}`, config);
+    await axios.delete(`https://record-on-the-block.herokuapp.com/products/${id}`, config);
     dispatch({
       type: actionTypes.DELETE_PRODUCT_SUCCESS,
     });
@@ -58,7 +58,7 @@ export const createProduct = (id) => async (dispatch, getState) => {
         userLogin: { userInfo },
       } = getState();
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-        const { data } = await axios.post(`/products/`,{}, config);
+        const { data } = await axios.post(`https://record-on-the-block.herokuapp.com/products/`,{}, config);
       dispatch({
           type: actionTypes.CREATE_PRODUCT_SUCCESS,
           payload:data
@@ -78,7 +78,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
         userLogin: { userInfo },
       } = getState();
       const config = { headers: { 'Content-Type':"application/json",Authorization: `Bearer ${userInfo.token}` } };
-        const { data } = await axios.put(`/products/${product._id}`,product, config);
+        const { data } = await axios.put(`https://record-on-the-block.herokuapp.com/products/${product._id}`,product, config);
       dispatch({
           type: actionTypes.UPDATE_PRODUCT_SUCCESS,
           payload:data

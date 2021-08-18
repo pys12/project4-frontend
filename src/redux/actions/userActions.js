@@ -10,7 +10,7 @@ export const login = (email, password) => async (dispatch) => {
         },
       }
   
-      const { data } = await axios.post('/users/login/',{ email, password },config)
+      const { data } = await axios.post('https://record-on-the-block.herokuapp.com/users/login/',{ email, password },config)
   
       dispatch({
         type: actionTypes.USER_LOGIN_SUCCESS,
@@ -45,7 +45,7 @@ export const register = (name,email, password) => async (dispatch) => {
       },
     }
 
-    const { data } = await axios.post('/users/',{ name, email, password },config)
+    const { data } = await axios.post('https://record-on-the-block.herokuapp.com/users/',{ name, email, password },config)
 
     dispatch({
       type: actionTypes.USER_REGISTER_SUCCESS,
