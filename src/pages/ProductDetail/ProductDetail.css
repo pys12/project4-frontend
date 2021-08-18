@@ -36,3 +36,7 @@ li::before{
 .btn{
     margin-top: 16px;
 }
+.out-of-stock{
+    color: rgb(223, 29, 29);
+    font-weight: 900;
+}

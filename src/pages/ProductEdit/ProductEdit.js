@@ -121,7 +121,8 @@ const ProductEdit = ({ match, history }) => {
                 <Form.Group controlId="price">
                   <Form.Label>Price</Form.Label>
                   <Form.Control
-                    type="number"
+                        type="number"
+                        min='0.01'
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
                   ></Form.Control>
@@ -130,7 +131,8 @@ const ProductEdit = ({ match, history }) => {
                 <Form.Group controlId="stockCount">
                   <Form.Label>Stock Count</Form.Label>
                   <Form.Control
-                    type="number"
+                        type="number"
+                        min='1'
                     value={stockCount}
                     onChange={(e) => setStockCount(e.target.value)}
                   ></Form.Control>

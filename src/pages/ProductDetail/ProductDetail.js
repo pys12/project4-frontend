@@ -36,8 +36,8 @@ const ProductDetail = ({ match, history }) => {
             <div className='title'>Title: {product.title}</div>
             
             <div>Release Date: {new Date(product.releaseDate).toLocaleDateString().replaceAll('/','-')}</div>
-            <div>Status: 
-            {product.stockCount > 0 ? " In Stock" : " Out Of Stock"}</div>
+            <>Status: 
+            {product.stockCount > 0 ? " In Stock" : <span className='out-of-stock'> Out Of Stock</span>}</>
             <div>Stock: {product.stockCount}</div>
             <div className='price'>Price: ${product.price}</div>
             {product.stockCount > 0 && (
