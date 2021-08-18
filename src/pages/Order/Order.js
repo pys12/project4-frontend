@@ -53,7 +53,7 @@ const Order = ({ match }) => {
       ) : (
         <Row>
           <div className="confirm-num">Order Confirmation# {order_id}</div>
-          <Col md={6}>
+          <Col md={5}>
             <ListGroup>
               <ListGroup.Item className="order-detail">
                 <h3 className="shipping-address">Shipping Address: </h3>
@@ -74,7 +74,7 @@ const Order = ({ match }) => {
               </ListGroup.Item>
             </ListGroup>
           </Col>
-          <Col md={5}>
+          <Col md={6}>
             <ListGroup className="order-summary">
               <ListGroup.Item>
                 <h3>Order Summary</h3>
