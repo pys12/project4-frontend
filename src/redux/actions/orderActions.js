@@ -22,6 +22,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
       type: actionTypes.CREATE_ORDER_SUCCESS,
       payload: data,
     });
+    localStorage.removeItem('cartItems')
   } catch (error) {
     dispatch({
       type: actionTypes.CREATE_ORDER_FAIL,
@@ -31,30 +32,64 @@ export const createOrder = (order) => async (dispatch, getState) => {
 };
 
 export const getOrderDetail = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: actionTypes.ORDER_DETAIL_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    const { data } = await axios.get(`/orders/${id}`, config);
+
+    dispatch({
+      type: actionTypes.ORDER_DETAIL_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: actionTypes.ORDER_DETAIL_FAIL,
+      payload: error.response,
+    });
+  }
+};
+
+export const payOrder =(orderId, paymentResult) => async (dispatch, getState) => {
     try {
       dispatch({
-        type: actionTypes.ORDER_DETAIL_REQUEST,
+        type: actionTypes.ORDER_PAY_REQUEST,
       });
-  
+
       const {
         userLogin: { userInfo },
       } = getState();
+
       const config = {
         headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${userInfo.token}`,
         },
       };
-      const { data } = await axios.get(`/orders/${id}`, config);
-  
+
+      const { data } = await axios.put(
+        `/orders/${orderId}/pay`,
+        paymentResult,
+        config
+      );
+
       dispatch({
-        type: actionTypes.ORDER_DETAIL_SUCCESS,
+        type: actionTypes.ORDER_PAY_SUCCESS,
         payload: data,
       });
     } catch (error) {
       dispatch({
-        type: actionTypes.ORDER_DETAIL_FAIL,
-        payload: error.response,
+        type: actionTypes.ORDER_PAY_FAIL,
+        payload: error.response
       });
     }
-};
-  
+  };
