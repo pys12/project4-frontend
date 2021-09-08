@@ -9,8 +9,8 @@ A full-stack application e-commerce website that allows users to shop a selectio
 
 
 ## Repositories
-[Front-end](https://github.com/pys12/project4-frontend)
-[Back-end](https://github.com/pys12/project4-backend)
+- [Front-end Repo](https://github.com/pys12/project4-frontend)
+- [Back-end Repo](https://github.com/pys12/project4-backend)
 
 
 ## Technologies:
